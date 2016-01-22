@@ -1,6 +1,5 @@
-/**
- * Angular Selectize Directive
- */
+var angular = require('angular');
+
 angular.module('selectize', []).directive('selectize', ['$q', '$timeout', function ($q, $timeout) {
     return {
         restrict: 'A',
@@ -34,6 +33,7 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
 
                     if (type === 'multi') {
                         selectize.on('change', function (selectizeValue) {
+                          console.log('val:',selectizeValue);
                             var map = [];
                             if (selectizeValue.length) {
                                 map = selectizeValue.split(',').map(function (value) {
