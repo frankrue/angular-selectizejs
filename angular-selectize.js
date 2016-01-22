@@ -46,7 +46,7 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
                             //     });
                             // }
                             // ngModel.$setViewValue(map);
-                            ngModel.$setViewValue(selectizeValue);
+                            ngModel.$setViewValue(selectizeValue.split(','));
                         });
                     }
 

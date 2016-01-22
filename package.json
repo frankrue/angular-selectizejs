@@ -1,6 +1,6 @@
 {
   "name": "angular-selectizejs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Angular directive for Selectize.js",
   "main": "angular-selectize.js",
   "author": "Daniel Queiroz Araújo",
