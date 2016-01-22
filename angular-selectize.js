@@ -33,20 +33,20 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
 
                     if (type === 'multi') {
                         selectize.on('change', function (selectizeValue) {
-                          console.log('val:',selectizeValue);
-                            var map = [];
-                            if (selectizeValue.length) {
-                                map = selectizeValue.split(',').map(function (value) {
-                                    var obj = {};
-                                    if (isNaN(Number(value))) {
-                                        obj[settings.labelField] = value;
-                                    } else {
-                                        obj[settings.valueField] = value;
-                                    }
-                                    return obj;
-                                });
-                            }
-                            ngModel.$setViewValue(map);
+                            // var map = [];
+                            // if (selectizeValue.length) {
+                            //     map = selectizeValue.split(',').map(function (value) {
+                            //         var obj = {};
+                            //         if (isNaN(Number(value))) {
+                            //             obj[settings.labelField] = value;
+                            //         } else {
+                            //             obj[settings.valueField] = value;
+                            //         }
+                            //         return obj;
+                            //     });
+                            // }
+                            // ngModel.$setViewValue(map);
+                            ngModel.$setViewValue(selectizeValue);
                         });
                     }
 
@@ -60,8 +60,8 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
                 },
                 onLoad: function () {
                     if (angular.isArray(ngModel.$modelValue)) {
-                        ngModel.$modelValue.forEach(function (obj) {
-                            selectize.addItem(obj.id, true);
+                        ngModel.$modelValue.forEach(function (val) {
+                            selectize.addItem(val, true);
                         });
                     } else {
                         selectize.setValue(ngModel.$modelValue, true);
