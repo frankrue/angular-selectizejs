@@ -9,6 +9,7 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
             selectize: '=',
             config: '&',
             options: '&',
+            type: '@',
             ngDisabled: '='
         },
         link: function (scope, element, attrs, ngModel) {
@@ -16,6 +17,7 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
 
             var $select, selectize;
             var type = element[0].tagName === 'SELECT' ? (element[0].hasAttribute('multiple') ? 'multi' : 'single') : 'multi';
+            if (attrs.type) type = attrs.type;
 
             var data = scope.options();
             var settings = scope.config();
@@ -57,6 +59,7 @@ angular.module('selectize', []).directive('selectize', ['$q', '$timeout', functi
                     if (onInitialize) {
                         onInitialize();
                     }
+
                 },
                 onLoad: function () {
                     if (angular.isArray(ngModel.$modelValue)) {
